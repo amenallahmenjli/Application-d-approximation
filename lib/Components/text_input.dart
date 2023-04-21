@@ -72,7 +72,6 @@ class _TextInputState extends State<TextInput> {
         border: OutlineInputBorder(
             borderSide:
                 BorderSide(color: _isError ? errorColor : widget.color)),
-
         errorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: widget.color, width: 2)),
         enabledBorder: OutlineInputBorder(
