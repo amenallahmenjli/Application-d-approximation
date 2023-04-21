@@ -33,3 +33,8 @@ TextStyle dropdownButtonTextStyleLight =
     dropdownButtonTextStyle.merge(const TextStyle(
   color: darkColor,
 ));
+
+TextStyle dropdownButtonTextStyleSelected =
+    dropdownButtonTextStyle.merge(const TextStyle(
+  color: primaryColor,
+));

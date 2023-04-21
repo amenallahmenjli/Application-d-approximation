@@ -14,12 +14,13 @@ class MyDropdownButton extends StatelessWidget {
     required this.main,
     required this.notMain,
     required this.textStyle,
+    required this.accent,
   });
 
   Color main;
   Color
       notMain; // I know the name is a really bad one but I'm too exhausted to think about a name rn
-
+  Color accent;
   TextStyle textStyle;
 
   DropdownController controller;
@@ -35,6 +36,12 @@ class MyDropdownButton extends StatelessWidget {
   Widget build(BuildContext context) {
     // I used the CoolDropdown widget because it's cool?
     return CoolDropdown<String>(
+      dropdownItemOptions: DropdownItemOptions(
+          textStyle: textStyle,
+          selectedTextStyle: dropdownButtonTextStyleSelected,
+          selectedBoxDecoration: BoxDecoration(
+              color: accent, borderRadius: BorderRadius.circular(5))),
+
       // The dropdown controller to retrieve its value
       controller: controller,
 
@@ -86,6 +93,7 @@ class MyDropdownButton extends StatelessWidget {
         textStyle: textStyle,
       ),
 
+      // The list of options that appear bellow the button
       dropdownOptions: DropdownOptions(
           // The space between the button and the options list
           top: 10,
@@ -116,6 +124,7 @@ class MyDropdownButton extends StatelessWidget {
       },
       onOpen: (value) {},
 
+      // There's a triangle that appears on top of the options it's annoying so I decided to remove it
       dropdownTriangleOptions: const DropdownTriangleOptions(
         width: 100,
         height: 0.0000000001,

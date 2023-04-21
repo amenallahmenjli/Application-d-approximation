@@ -1,3 +1,4 @@
+import 'package:approximation_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -41,7 +42,6 @@ class _TextInputState extends State<TextInput> {
 
   @override
   Widget build(BuildContext context) {
-    debugPrint(_isError.toString());
     // Add some padding to the component
     return TextField(
       // The TextField controller that comes from the constructor
@@ -65,19 +65,22 @@ class _TextInputState extends State<TextInput> {
 
         // Se
         floatingLabelStyle: _isError
-            ? const TextStyle(color: Color(0xffe63946))
+            ? const TextStyle(color: errorColor)
             : TextStyle(color: widget.color),
 
         errorText: _errorText,
         border: OutlineInputBorder(
-            borderSide: BorderSide(color: widget.color, width: 2)),
+            borderSide:
+                BorderSide(color: _isError ? errorColor : widget.color)),
 
+        errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: widget.color, width: 2)),
         enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: widget.color, width: 2)),
         focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: widget.color, width: 2)),
         labelStyle: TextStyle(color: widget.color),
-        errorStyle: const TextStyle(color: Color(0xffe63946)),
+        errorStyle: const TextStyle(color: errorColor),
         constraints: const BoxConstraints(minHeight: 30),
         contentPadding: const EdgeInsets.all(10),
       ),
