@@ -43,6 +43,14 @@ class _TextInputState extends State<TextInput> {
   @override
   Widget build(BuildContext context) {
     // Add some padding to the component
+    Color color;
+
+    if (_isError == true) {
+      color = errorColor;
+    } else {
+      color = widget.color;
+    }
+
     return TextField(
       // The TextField controller that comes from the constructor
       // to retrieve user's input
@@ -64,22 +72,20 @@ class _TextInputState extends State<TextInput> {
         labelText: widget.text,
 
         // Se
-        floatingLabelStyle: _isError
-            ? const TextStyle(color: errorColor)
-            : TextStyle(color: widget.color),
+        floatingLabelStyle: TextStyle(color: color),
 
         errorText: _errorText,
-        border: OutlineInputBorder(
-            borderSide:
-                BorderSide(color: _isError ? errorColor : widget.color)),
-        errorBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: widget.color, width: 2)),
-        enabledBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: widget.color, width: 2)),
-        focusedBorder: OutlineInputBorder(
-            borderSide: BorderSide(color: widget.color, width: 2)),
+
+        border: OutlineInputBorder(borderSide: BorderSide(color: color)),
+
+        errorBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: color, width: 2)),
+        enabledBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: color, width: 2)),
+        focusedBorder:
+            OutlineInputBorder(borderSide: BorderSide(color: color, width: 2)),
         labelStyle: TextStyle(color: widget.color),
-        errorStyle: const TextStyle(color: errorColor),
+        errorStyle: TextStyle(color: color),
         constraints: const BoxConstraints(minHeight: 30),
         contentPadding: const EdgeInsets.all(10),
       ),

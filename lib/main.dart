@@ -8,6 +8,9 @@ void main() {
 }
 
 ValueNotifier<ThemeData> themeData = ValueNotifier<ThemeData>(lightTheme);
+TextEditingController textController = TextEditingController();
+
+ValueNotifier<String?> selectedFunction = ValueNotifier<String>("null");
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -21,6 +24,8 @@ class MainApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             theme: themeData.value,
             home: MyHomePage(
+              selectedFunction: selectedFunction,
+              textController: textController,
               themeData: themeData,
             ),
           );

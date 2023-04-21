@@ -15,7 +15,10 @@ class MyDropdownButton extends StatelessWidget {
     required this.notMain,
     required this.textStyle,
     required this.accent,
+    required this.selectedFunction,
   });
+
+  ValueNotifier<String?> selectedFunction;
 
   Color main;
   Color
@@ -27,13 +30,25 @@ class MyDropdownButton extends StatelessWidget {
 
   // Options in the dropdownbutton
   List<CoolDropdownItem<String>> dropdownItemList = [
-    CoolDropdownItem<String>(label: 'Choisir une fonction', value: 'f'),
+    CoolDropdownItem(label: 'Choisir une fonction', value: ''),
     CoolDropdownItem<String>(label: 'f(x)', value: 'f'),
     CoolDropdownItem<String>(label: 'g(x)', value: 'g'),
   ];
 
   @override
   Widget build(BuildContext context) {
+    print(selectedFunction.value);
+    int defaultF = 0;
+    if (selectedFunction.value == "null") {
+      defaultF = 0;
+    } else if (selectedFunction.value == "f") {
+      defaultF = 1;
+    } else if (selectedFunction.value == "g") {
+      defaultF = 2;
+    } else {
+      print("Something is wrong here");
+    }
+
     // I used the CoolDropdown widget because it's cool?
     return CoolDropdown<String>(
       dropdownItemOptions: DropdownItemOptions(
@@ -49,7 +64,7 @@ class MyDropdownButton extends StatelessWidget {
       dropdownList: dropdownItemList,
 
       // The default selected item
-      defaultItem: dropdownItemList[0],
+      defaultItem: dropdownItemList[defaultF],
 
       // The button itself
       resultOptions: ResultOptions(
@@ -120,6 +135,13 @@ class MyDropdownButton extends StatelessWidget {
       onChange: (value) async {
         if (controller.isError) {
           await controller.resetError();
+        } else {
+          print(value);
+          if (value == "") {
+            selectedFunction.value = "null";
+          } else {
+            selectedFunction.value = value;
+          }
         }
       },
       onOpen: (value) {},

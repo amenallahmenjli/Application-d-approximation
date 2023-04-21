@@ -7,8 +7,14 @@ import '../constants/themes/dark.dart';
 import '../constants/themes/light.dart';
 
 class MyHomePage extends StatelessWidget {
-  const MyHomePage({super.key, required this.themeData});
+  MyHomePage(
+      {super.key,
+      required this.themeData,
+      required this.textController,
+      required this.selectedFunction});
   final ValueNotifier<ThemeData> themeData;
+  final TextEditingController textController;
+  ValueNotifier<String?> selectedFunction;
 
   void switchTheme(ValueNotifier<ThemeData> themeData) {
     final ThemeData currentTheme = themeData.value;
@@ -56,7 +62,9 @@ class MyHomePage extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.only(top: 30, right: 15, left: 15),
         child: Body(
+          selectedFunction: selectedFunction,
           themeData: themeData,
+          textController: textController,
         ),
       ),
     );

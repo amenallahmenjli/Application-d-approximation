@@ -10,10 +10,14 @@ import 'text_input.dart';
 
 // ignore: must_be_immutable
 class Body extends StatelessWidget {
-  Body({super.key, required this.themeData});
+  Body(
+      {super.key,
+      required this.themeData,
+      required this.textController,
+      required this.selectedFunction});
   final ValueNotifier<ThemeData> themeData;
-
-  TextEditingController textController = TextEditingController();
+  final TextEditingController textController;
+  ValueNotifier<String?> selectedFunction;
 
   DropdownController dropdownController = DropdownController();
 
@@ -25,18 +29,38 @@ class Body extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Text Input Widget
         TextInput(
           color: themeData.value == darkTheme ? lightColor : darkColor,
           controller: textController,
           isValid: isNValid,
           text: "Saisir un entier n:",
         ),
+
+        // Some Space
         const SizedBox(
           height: 10,
         ),
+
+        // Dropdown Button Widget
         themeData.value == lightTheme
-            ? MyDropdownButtonLight(controller: dropdownController)
-            : MyDropdownButtonDark(controller: dropdownController),
+            ? MyDropdownButtonLight(
+                controller: dropdownController,
+                selectedFunction: selectedFunction,
+              )
+            : MyDropdownButtonDark(
+                controller: dropdownController,
+                selectedFunction: selectedFunction,
+              ),
+
+        // Some Space
+        const SizedBox(
+          height: 10,
+        ),
+
+        Text(textController.text),
+
+        Text(selectedFunction.value ?? "null"),
       ],
     );
   }

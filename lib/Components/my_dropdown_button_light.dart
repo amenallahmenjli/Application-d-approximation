@@ -10,8 +10,10 @@ class MyDropdownButtonLight extends StatelessWidget {
   MyDropdownButtonLight({
     super.key,
     required this.controller,
+    required this.selectedFunction,
   });
 
+  ValueNotifier<String?> selectedFunction;
   DropdownController controller;
 
   @override
@@ -23,6 +25,7 @@ class MyDropdownButtonLight extends StatelessWidget {
       notMain: darkColor,
       textStyle: dropdownButtonTextStyleLight,
       accent: accentLight,
+      selectedFunction: selectedFunction,
     );
   }
 }
