@@ -87,13 +87,13 @@ class _TextInputState extends State<TextInput> {
           _errorText = "n ne peut pas etre vide!";
           widget.isValid = false;
         } else if (int.tryParse(text) == null) {
-          _errorText = "n doit etre un entier";
+          _errorText = "n doit etre un entier!";
           widget.isValid = false;
         } else if (int.parse(text) < 100 || int.parse(text) > 1000) {
-          _errorText = "n doit etre entre 100 et 1000";
+          _errorText = "n doit etre entre 100 et 1000!";
           widget.isValid = false;
         } else if (divisiblePar7(int.parse(text)) == false) {
-          _errorText = "n doit etre divisible par 7";
+          _errorText = "n doit etre divisible par 7!";
           widget.isValid = false;
         } else {
           _errorText = null;
