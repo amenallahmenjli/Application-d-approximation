@@ -28,6 +28,7 @@ class MyHomePage extends StatelessWidget {
         centerTitle: true,
         actions: [
           IconButton(
+              iconSize: 20,
               onPressed: () {
                 switchTheme(themeData);
               },
