@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'constants/themes/dark.dart';
 import 'constants/themes/light.dart';
 import 'pages/my_home_page.dart';
 

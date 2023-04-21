@@ -2,6 +2,7 @@ import 'package:approximation_app/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../Components/body.dart';
 import '../constants/themes/dark.dart';
 import '../constants/themes/light.dart';
 
@@ -23,7 +24,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Application d'approximation"),
+        title: const Text("Application d'approximation"),
         centerTitle: true,
         actions: [
           IconButton(
@@ -33,12 +34,13 @@ class MyHomePage extends StatelessWidget {
               icon: themeData.value == lightTheme
                   ? SvgPicture.asset(
                       "assets/icons/dark_mode.svg",
-                      colorFilter: ColorFilter.mode(darkColor, BlendMode.srcIn),
+                      colorFilter:
+                          const ColorFilter.mode(darkColor, BlendMode.srcIn),
                     )
                   : SvgPicture.asset(
                       "assets/icons/light_mode.svg",
                       colorFilter:
-                          ColorFilter.mode(lightColor, BlendMode.srcIn),
+                          const ColorFilter.mode(lightColor, BlendMode.srcIn),
                     ))
         ],
         bottom: PreferredSize(
@@ -48,16 +50,10 @@ class MyHomePage extends StatelessWidget {
               height: 1,
             )),
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Text('Hello World!'),
-            TextButton(
-                onPressed: () {
-                  switchTheme(themeData);
-                },
-                child: Text("Turn to the darkside!"))
-          ],
+      body: Padding(
+        padding: const EdgeInsets.only(top: 30, right: 15, left: 15),
+        child: Body(
+          themeData: themeData,
         ),
       ),
     );
