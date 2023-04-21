@@ -27,22 +27,24 @@ class MyHomePage extends StatelessWidget {
         title: const Text("Application d'approximation"),
         centerTitle: true,
         actions: [
-          IconButton(
-              iconSize: 20,
-              onPressed: () {
-                switchTheme(themeData);
-              },
-              icon: themeData.value == lightTheme
-                  ? SvgPicture.asset(
-                      "assets/icons/dark_mode.svg",
-                      colorFilter:
-                          const ColorFilter.mode(darkColor, BlendMode.srcIn),
-                    )
-                  : SvgPicture.asset(
-                      "assets/icons/light_mode.svg",
-                      colorFilter:
-                          const ColorFilter.mode(lightColor, BlendMode.srcIn),
-                    ))
+          Padding(
+            padding: const EdgeInsets.only(top: 10, bottom: 10),
+            child: IconButton(
+                onPressed: () {
+                  switchTheme(themeData);
+                },
+                icon: themeData.value == lightTheme
+                    ? SvgPicture.asset(
+                        "assets/icons/dark_mode.svg",
+                        colorFilter:
+                            const ColorFilter.mode(darkColor, BlendMode.srcIn),
+                      )
+                    : SvgPicture.asset(
+                        "assets/icons/light_mode.svg",
+                        colorFilter:
+                            const ColorFilter.mode(lightColor, BlendMode.srcIn),
+                      )),
+          )
         ],
         bottom: PreferredSize(
             preferredSize: const Size.fromHeight(2),
