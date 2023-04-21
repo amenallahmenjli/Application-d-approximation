@@ -5,11 +5,22 @@ import 'package:flutter/material.dart';
 
 import '../constants/colors.dart';
 import '../constants/themes/dark.dart';
-import '../main.dart';
 
 // ignore: must_be_immutable
 class MyDropdownButton extends StatelessWidget {
-  MyDropdownButton({super.key, required this.controller});
+  MyDropdownButton({
+    super.key,
+    required this.controller,
+    required this.main,
+    required this.notMain,
+    required this.textStyle,
+  });
+
+  Color main;
+  Color
+      notMain; // I know the name is a really bad one but I'm too exhausted to think about a name rn
+
+  TextStyle textStyle;
 
   DropdownController controller;
 
@@ -37,18 +48,24 @@ class MyDropdownButton extends StatelessWidget {
       resultOptions: ResultOptions(
         // Box Decoration options
         boxDecoration: BoxDecoration(
-          // Border Radius
-          borderRadius: BorderRadius.circular(5),
+            // Border Radius
+            borderRadius: BorderRadius.circular(5),
 
-          // Border style
-          border: Border.all(
-            width: 2,
-            color: themeData.value == darkTheme ? lightColor : darkColor,
-          ),
+            // Border style
+            border: Border.all(width: 2, color: notMain),
 
-          // Background Color
-          color: themeData.value == darkTheme ? darkColor : lightColor,
-        ),
+            // Background Color
+            color: main),
+
+        openBoxDecoration: BoxDecoration(
+            // Border Radius
+            borderRadius: BorderRadius.circular(5),
+
+            // Border style
+            border: Border.all(width: 2, color: notMain),
+
+            // Background Color
+            color: main),
 
         // Padding inside the box
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -58,18 +75,39 @@ class MyDropdownButton extends StatelessWidget {
           width: 10,
           height: 10,
           child: CustomPaint(
-            painter: DropdownArrowPainter(
-              color: themeData.value == darkTheme ? lightColor : darkColor,
-            ),
+            painter: DropdownArrowPainter(color: notMain),
           ),
         ),
 
-        placeholder: 'Select Fruit',
+        // Idk what is this but let's leave it there
         isMarquee: true,
-        textStyle: themeData.value == darkTheme
-            ? dropdownButtonTextStyleDark
-            : dropdownButtonTextStyleLight,
+
+        // Text style in the button
+        textStyle: textStyle,
       ),
+
+      dropdownOptions: DropdownOptions(
+          // The space between the button and the options list
+          top: 10,
+
+          // The gap between options
+          gap: const DropdownGap.all(5),
+
+          // the border around the options list
+          borderSide: BorderSide(
+            width: 2,
+            color: notMain,
+          ),
+
+          // Background Color
+          color: main,
+
+          // Border radius
+          borderRadius: BorderRadius.circular(5),
+
+          // The padding around the options
+          padding: const EdgeInsets.symmetric(horizontal: 5),
+          animationType: DropdownAnimationType.size),
 
       onChange: (value) async {
         if (controller.isError) {
@@ -78,32 +116,12 @@ class MyDropdownButton extends StatelessWidget {
       },
       onOpen: (value) {},
 
-      dropdownOptions: DropdownOptions(
-          top: 20,
-          gap: const DropdownGap.all(5),
-          borderSide: BorderSide(
-            width: 1,
-            color: themeData.value == darkTheme ? lightColor : darkColor,
-          ),
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          align: DropdownAlign.left,
-          animationType: DropdownAnimationType.size),
       dropdownTriangleOptions: const DropdownTriangleOptions(
         width: 100,
         height: 0.0000000001,
         align: DropdownTriangleAlign.left,
         borderRadius: 2,
         left: 20,
-      ),
-      dropdownItemOptions: DropdownItemOptions(
-        selectedBoxDecoration: BoxDecoration(color: Colors.amber),
-        textStyle: themeData.value == darkTheme
-            ? dropdownButtonTextStyleLight
-            : dropdownButtonTextStyleDark,
-        isMarquee: true,
-        mainAxisAlignment: MainAxisAlignment.start,
-        render: DropdownItemRender.all,
-        height: 35,
       ),
     );
   }
