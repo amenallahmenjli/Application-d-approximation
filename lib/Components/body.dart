@@ -3,7 +3,7 @@ import 'package:approximation_app/constants/themes/dark.dart';
 import 'package:cool_dropdown/cool_dropdown.dart';
 import 'package:flutter/material.dart';
 
-import 'my_dropdown_controller.dart';
+import 'my_dropdown_button.dart';
 import 'text_input.dart';
 
 // ignore: must_be_immutable
@@ -21,6 +21,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         TextInput(
           color: themeData.value == darkTheme ? lightColor : darkColor,
@@ -31,7 +32,9 @@ class Body extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        MyDropdownButton()
+        MyDropdownButton(
+          controller: dropdownController,
+        )
       ],
     );
   }
