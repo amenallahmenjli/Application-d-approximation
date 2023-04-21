@@ -18,3 +18,18 @@ TextStyle appBarTextStyleDark = appBarTextStyle.merge(const TextStyle(
 TextStyle appBarTextStyleLight = appBarTextStyle.merge(const TextStyle(
   color: darkColor,
 ));
+
+TextStyle dropdownButtonTextStyle = generalTextStyle.merge(const TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w600,
+));
+
+TextStyle dropdownButtonTextStyleDark =
+    dropdownButtonTextStyle.merge(const TextStyle(
+  color: lightColor,
+));
+
+TextStyle dropdownButtonTextStyleLight =
+    dropdownButtonTextStyle.merge(const TextStyle(
+  color: darkColor,
+));
