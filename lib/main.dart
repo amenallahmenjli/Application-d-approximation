@@ -58,7 +58,7 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
           animation: _controller,
           builder: (BuildContext context, Widget? child){
             return Transform.translate(
-              offset: Offset(150, _controller.value),
+              offset: Offset(0, _controller.value),
               child: Container(
                 width: 100,
                 height: 100,
