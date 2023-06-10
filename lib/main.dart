@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/physics.dart';
 
-void main(){
+void main() {
   runApp(const MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,7 +16,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
 
@@ -25,17 +23,15 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin{
-  late AnimationController _controller; 
+class _MyHomePageState extends State<MyHomePage>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
   late SpringSimulation _simulation;
   @override
-  void initState(){
+  void initState() {
     super.initState();
     _controller = AnimationController(
-      vsync: this,
-      lowerBound: 0,
-      upperBound: double.infinity
-    );
+        vsync: this, lowerBound: 0, upperBound: double.infinity);
 
     _simulation = SpringSimulation(
       const SpringDescription(
@@ -49,32 +45,31 @@ class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateM
     );
     _controller.animateWith(_simulation);
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: AnimatedBuilder(
+        body: Center(
+      child: AnimatedBuilder(
           animation: _controller,
-          builder: (BuildContext context, Widget? child){
+          builder: (BuildContext context, Widget? child) {
             return Transform.translate(
-              offset: Offset(0, _controller.value),
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color.fromARGB(255, 255, 47, 0), Color.fromARGB(255, 33, 82, 243),],
-                  ),
-                  shape: BoxShape.circle,
-                )
-              )
-              );
-          }
-        ),
-      )
-    );
+                offset: Offset(0, _controller.value),
+                child: Container(
+                    width: 50,
+                    height: 50,
+                    decoration: const BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromARGB(255, 255, 47, 0),
+                          Color.fromARGB(255, 33, 107, 243),
+                        ],
+                      ),
+                      shape: BoxShape.circle,
+                    )));
+          }),
+    ));
   }
 }
