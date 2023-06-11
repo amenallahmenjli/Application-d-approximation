@@ -26,7 +26,7 @@ class _MyHomePageState extends State<MyHomePage>
         stiffness: 600,
         damping: 15,
       ),
-      0,
+      -100,
       0,
       0,
     );
