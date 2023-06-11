@@ -18,8 +18,10 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     controller =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
     colorAnimation = ColorTween(begin: Colors.blue, end: Colors.yellow)
-      .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
+        .animate(CurvedAnimation(parent: controller, curve: Curves.bounceOut));
     sizeAnimation = Tween<double>(begin: 100.0, end: 200.0).animate(controller);
+
+    controller.forward();
 
     // In initState
     controller.addListener(() {
