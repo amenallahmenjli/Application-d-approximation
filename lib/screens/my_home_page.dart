@@ -24,7 +24,7 @@ class _MyHomePageState extends State<MyHomePage>
       const SpringDescription(
         mass: 1,
         stiffness: 1000,
-        damping: 20,
+        damping: 15,
       ),
       -200,
       0,
