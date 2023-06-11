@@ -22,9 +22,9 @@ class _MyHomePageState extends State<MyHomePage>
 
     _simulation = SpringSimulation(
       const SpringDescription(
-        mass: 1,
-        stiffness: 600,
-        damping: 15,
+        mass: 7.5,
+        stiffness: 3000,
+        damping: 80,
       ),
       -100,
       0,
