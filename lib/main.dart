@@ -1,4 +1,4 @@
-import 'package:bouncy_animation/screens/home.dart';
+import 'screens/home.dart';
 import 'package:flutter/material.dart';
 import 'screens/my_home_page.dart';
 
