@@ -1,3 +1,4 @@
+import 'package:bouncy_animation/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'screens/my_home_page.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: const MyHomePage(),
+      home: Home(),
     );
   }
 }

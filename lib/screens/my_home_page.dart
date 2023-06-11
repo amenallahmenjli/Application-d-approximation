@@ -9,11 +9,13 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-// The State
+// Add the SingleTickerProviderStateMixin to the state of MyHomePage
+// 
 class _MyHomePageState extends State<MyHomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late SpringSimulation _simulation;
+
   @override
   void initState() {
     super.initState();
