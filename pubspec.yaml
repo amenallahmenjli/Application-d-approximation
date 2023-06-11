@@ -1,5 +1,5 @@
-name: approximation_app
-description: A new Flutter project.
+name: bouncy_animation
+description: Bouncy Loading animation in Flutter.
 publish_to: 'none'
 version: 0.1.0
 
@@ -7,11 +7,8 @@ environment:
   sdk: '>=2.19.0 <3.0.0'
 
 dependencies:
-  cool_dropdown: ^2.0.1
-  dropdown_button2: ^2.1.0
   flutter:
     sdk: flutter
-  flutter_svg: ^2.0.5
 
 dev_dependencies:
   flutter_test:
@@ -20,18 +17,3 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  fonts:
-    - family: Poppins
-      fonts:
-        - asset: fonts/Poppins-Bold.ttf
-          weight: 700
-        - asset: fonts/Poppins-Medium.ttf
-          weight: 400
-        - asset: fonts/Poppins-Regular.ttf
-          weight: 500
-        - asset: fonts/Poppins-SemiBold.ttf
-          weight: 600
-
-  assets:
-    - assets/icons/

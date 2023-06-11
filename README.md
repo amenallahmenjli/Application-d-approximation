@@ -1,3 +1,3 @@
-# approximation_app
+# Bouncy Loading animation in Flutter
 
-A new Flutter project.
+A Flutter project that I started after watching an Instagram reel of a loading animation made in Figma.
